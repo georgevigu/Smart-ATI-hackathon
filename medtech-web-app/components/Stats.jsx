@@ -15,7 +15,8 @@ export default function Stats({ patient }) {
 				xAxis={[
 					{
 						data: xAxisData,
-						// label: "Time",
+						label: "Time",
+						labelStyle: { fill: "white" },
 						tickLabelStyle: { fill: "white" },
 					},
 				]}
@@ -23,6 +24,9 @@ export default function Stats({ patient }) {
 					{
 						min: 0,
 						max: 10,
+						label: "Score",
+						labelStyle: { fill: "white" },
+
 						tickLabelStyle: { fill: "white" },
 						colorMap: {
 							type: "piecewise",

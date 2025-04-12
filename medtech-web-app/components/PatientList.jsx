@@ -31,7 +31,7 @@ function PatientCard({ patient, onClick }) {
 
 	return (
 		<div
-			className="w-full p-4 mb-2 rounded-lg bg-[#141629] hover:bg-[#1E2137] transition-colors cursor-pointer border-b border-[rgba(255,255,255,0.08)]"
+			className="w-full p-4 mb-2 rounded-lg bg-[#1a1a1a] hover:bg-[#1E2137] transition-colors cursor-pointer border-b border-[rgba(255,255,255,0.08)]"
 			onClick={onClick}
 		>
 			<div className="flex justify-between items-center">
@@ -53,7 +53,7 @@ function PatientCard({ patient, onClick }) {
 
 export default function PatientList({ onSelectPatient }) {
 	return (
-		<div className="w-full h-screen overflow-y-auto bg-[#141629] p-4 scrollbar-thin scrollbar-thumb-[#034c81] scrollbar-track-[#141629]">
+		<div className="w-full h-screen overflow-y-auto bg-[#1a1a1a] p-4 scrollbar-thin scrollbar-thumb-[#034c81] scrollbar-track-[#141629]">
 			{patients.map((patient) => (
 				<PatientCard
 					key={patient.id}
