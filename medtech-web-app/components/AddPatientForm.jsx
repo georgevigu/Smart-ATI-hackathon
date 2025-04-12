@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
+import { API_CONFIG } from "../config";
 
 const AddPatientForm = ({ onAddPatient }) => {
 	const [patientData, setPatientData] = useState({
@@ -42,7 +43,7 @@ const AddPatientForm = ({ onAddPatient }) => {
 			const requestData = getRequestData(patientData);
 
 			const response = await fetch(
-				"http://172.21.89.51:8080/pacients/addWithUpdateDTO",
+				`${API_CONFIG.BASE_URL}/pacients/addWithUpdateDTO`,
 				{
 					method: "POST",
 					headers: {
@@ -124,6 +125,8 @@ const AddPatientForm = ({ onAddPatient }) => {
 		return requiredKeys.every((key) => patientData[key] !== "");
 	}, [patientData]); // Only recompute when patientData changes
 
+	console.log(finalScore);
+
 	useEffect(() => {
 		const fetchScore = async () => {
 			if (!areRequiredFieldsFilled()) {
@@ -133,7 +136,7 @@ const AddPatientForm = ({ onAddPatient }) => {
 
 			try {
 				const response = await fetch(
-					"http://172.21.89.51:8080/pacients/tryFinalScore",
+					`${API_CONFIG.BASE_URL}/pacients/tryFinalScore`,
 					{
 						method: "POST",
 						headers: {
@@ -160,11 +163,11 @@ const AddPatientForm = ({ onAddPatient }) => {
 
 	return (
 		<div className="w-full p-4 text-white">
-			<div className="flex justify-between items-center mb-6">
+			<div className="flex justify-between items-center mb-6 relative">
 				<h2 className="text-xl font-bold">Add New Patient</h2>
 				{finalScore !== null && (
-					<div className="text-lg font-semibold bg-blue-700 px-4 py-2 rounded">
-						Score: {finalScore}
+					<div className="absolute right-0 top-0 bg-blue-600 text-white px-4 py-2 rounded-lg shadow-lg text-lg font-bold">
+						Final Score: {finalScore}
 					</div>
 				)}
 			</div>

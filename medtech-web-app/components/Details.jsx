@@ -4,7 +4,13 @@ import Beds from "./Beds";
 import Parametres from "./Paramtres";
 import BasicTabs from "./BasicTabs";
 
-export default function Details({ scoreLog, patient }) {
+export default function Details({
+	redPatients,
+	yellowPatients,
+	greenPatients,
+	scoreLog,
+	patient,
+}) {
 	const scoreColor =
 		patient.scorGeneralFinal <= 3
 			? "bg-red-500"
@@ -13,7 +19,11 @@ export default function Details({ scoreLog, patient }) {
 			: "bg-green-500";
 
 	return Object.keys(patient).length === 0 ? (
-		<p>beds</p>
+		<Beds
+			greenPatients={greenPatients}
+			redPatients={redPatients}
+			yellowPatients={yellowPatients}
+		/>
 	) : (
 		<div className="flex flex-col items-center w-full px-4">
 			{/* Header section */}

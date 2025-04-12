@@ -49,7 +49,7 @@ export default function Stats({ scoreLog }) {
 						tickLabelStyle: { fill: "white" },
 						colorMap: {
 							type: "piecewise",
-							thresholds: [3, 7],
+							thresholds: [3.1, 6.9],
 							colors: ["red", "yellow", "green"],
 						},
 					},
@@ -72,6 +72,7 @@ export default function Stats({ scoreLog }) {
 				sx={{
 					"& .MuiChartsAxis-line, & .MuiChartsAxis-tick": {
 						stroke: "white",
+						fill: "white",
 					},
 					"& .MuiChartsGrid-root line": {
 						opacity: 0.2,
