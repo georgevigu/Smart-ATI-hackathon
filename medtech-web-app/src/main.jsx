@@ -4,6 +4,7 @@ import "./index.css";
 import { BrowserRouter, Routes, Route } from "react-router";
 import App from "./App.jsx";
 import Login from "../components/Login.jsx";
+import Beds from "../components/Beds.jsx";
 
 createRoot(document.getElementById("root")).render(
 	<BrowserRouter>

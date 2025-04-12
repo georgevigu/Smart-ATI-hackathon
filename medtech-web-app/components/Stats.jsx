@@ -1,13 +1,31 @@
 import React from "react";
 import { LineChart } from "@mui/x-charts/LineChart";
 
-export default function Stats({ patient }) {
-	// Use patient's scoreHistory or default to [0] if not available
-	const scoreHistory = patient?.scoreHistory || [0];
-	console.log(patient);
+export default function Stats({ scoreLog }) {
+	// Verify scoreLog is an array, otherwise use empty array as fallback
+	const logEntries = Array.isArray(scoreLog) ? scoreLog : [];
 
-	// Create x-axis labels (time points) based on the history length
-	const xAxisData = scoreHistory.map((_, index) => index + 1);
+	// Sort entries by timestamp (newest first)
+	const sortedEntries = [...logEntries].sort((a, b) => {
+		const timeA = new Date(a.timestamp || 0).getTime();
+		const timeB = new Date(b.timestamp || 0).getTime();
+		return timeB - timeA; // Reverse sort for newest first
+	});
+
+	// Extract scores from sorted entries
+	const scores = sortedEntries.map((entry) => entry?.scorGeneralFinal || 0);
+	const timestamps = sortedEntries.map((entry) => entry?.timestamp || "");
+
+	// Calculate minutes ago from current time
+	const now = Date.now();
+	const xAxisData = timestamps.map((timestamp) => {
+		const entryTime = new Date(timestamp).getTime();
+		const diffMs = now - entryTime;
+		return Math.floor(diffMs / (1000 * 60)); // Minutes ago
+	});
+
+	console.log("Scores (newest first):", scores);
+	console.log("Minutes Ago Data:", xAxisData);
 
 	return (
 		<div className="p-4">
@@ -15,9 +33,11 @@ export default function Stats({ patient }) {
 				xAxis={[
 					{
 						data: xAxisData,
-						label: "Time",
+						reverse: true,
+						label: "Minutes Ago",
 						labelStyle: { fill: "white" },
 						tickLabelStyle: { fill: "white" },
+						valueFormatter: (value) => `${value}`,
 					},
 				]}
 				yAxis={[
@@ -26,7 +46,6 @@ export default function Stats({ patient }) {
 						max: 10,
 						label: "Score",
 						labelStyle: { fill: "white" },
-
 						tickLabelStyle: { fill: "white" },
 						colorMap: {
 							type: "piecewise",
@@ -37,8 +56,7 @@ export default function Stats({ patient }) {
 				]}
 				series={[
 					{
-						data: scoreHistory,
-						// label: "Health Score",
+						data: scores,
 						color: "#00ff00",
 						showMark: true,
 					},
@@ -59,8 +77,6 @@ export default function Stats({ patient }) {
 						opacity: 0.2,
 						stroke: "white",
 						strokeWidth: 1,
-					},
-					"& .MuiChartsLegend-root": {
 						fill: "white",
 					},
 				}}
