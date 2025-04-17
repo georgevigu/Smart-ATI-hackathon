@@ -8,4 +8,4 @@ Built with: \
 [![image](https://img.shields.io/badge/Material%20UI-007FFF?style=for-the-badge&logo=mui&logoColor=white)](https://mui.com/material-ui/) \
 [![image](https://img.shields.io/badge/tailwindcss-0F172A?&logo=tailwindcss)](https://tailwindcss.com/)
 
-
+![Smart ATI demo](https://github.com/georgevigu/frontend-hackathon/blob/main/images/smart-ati.gif)
