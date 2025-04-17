@@ -1,6 +1,6 @@
 ## Smart ATI
 
-Made at Hackathon by USO in April 2025. \
+Made at Hackathon by USO in April 2025. 
 
 
 There is a problem in some hospitals in Romania where the beds at the ICU are full and the doctors waste time deciding who is healthy enough and can be moved.
