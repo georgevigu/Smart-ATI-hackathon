@@ -1,7 +1,7 @@
 ## Smart ATI
 
-Made at Hackathon by USO in April 2025.
-\
+Made at Hackathon by USO in April 2025. \
+
 
 There is a problem in some hospitals in Romania where the beds at the ICU are full and the doctors waste time deciding who is healthy enough and can be moved.
 This website aims to solve this problem by using an algorithm that decides who is healthy enough and gives the pacients a score from 1-10. It also centralizes all patient data.
